@@ -1,58 +1,87 @@
 package com.justai.jaicf.template.scenario
 
-import com.justai.jaicf.activator.caila.caila
 import com.justai.jaicf.builder.Scenario
+import com.justai.jaicf.reactions.buttons
 
 val mainScenario = Scenario {
     state("start") {
         activators {
             regex("/start")
-            intent("Hello")
+            intent("game")
         }
         action {
             reactions.run {
-                image("https://media.giphy.com/media/ICOgUNjpvO0PC/source.gif")
-                sayRandom(
-                    "Hello! How can I help?",
-                    "Hi there! How can I help you?"
-                )
-                buttons(
-                    "Help me!",
-                    "How are you?",
-                    "What is your name?"
-                )
+                image("https://media.giphy.com/media/l2JdV8tMQxD6OZf8s/giphy.gif")
+                say("Привет! Это игра больше-меньше")
+                say("Играем?")
+                buttons("Да" to "./whoFirst", "Нет" to "/exit")
+                buttons("Правила" to "/help")
+            }
+        }
+
+        state("whoFirst") {
+            action {
+                reactions.run{
+                    say("Кто начнет?")
+                    buttons(Pair("Ты", "you"), Pair("Я", "me"))
+                }
+            }
+
+            state("you") {
+                action {
+                    reactions.run {
+                        say("Я начинаю!")
+                    }
+                }
+            }
+
+            state("me") {
+                action {
+                    reactions.run {
+                        say("Ты начинаешь!")
+                    }
+                }
             }
         }
     }
 
-    state("bye") {
+    state("exit") {
         activators {
-            intent("Bye")
+            regex("/exit")
+            regex("/quit")
+            intent("exit")
         }
-
         action {
-            reactions.sayRandom(
-                "See you soon!",
-                "Bye-bye!"
-            )
-            reactions.image("https://media.giphy.com/media/EE185t7OeMbTy/source.gif")
+            reactions.run {
+                say("Очень жаль! Ну ничего страшного, если захочешь поиграть, то скажи что-то вроде 'Хочу играть'")
+            }
         }
     }
 
-    state("smalltalk", noContext = true) {
-        activators {
-            anyIntent()
+    state("help", noContext = true) {
+        globalActivators {
+            intent("rules")
         }
 
-        action(caila) {
-            activator.topIntent.answer?.let { reactions.say(it) } ?: reactions.go("/fallback")
+        action {
+            reactions.run {
+                say("Я или ты, загадываем любое число случайным образом и просим угадать это число.")
+                say("Затем вводим число. Если предположение неверно, то надо сказать, больше " +
+                        "или меньше загаданное число, а затем повторяем попытку.")
+                say("Если число угадано, игра будет считаться завершенной.")
+                say("Начнем?")
+                buttons("Да" to "/start/whoFirst", "Нет" to "/exit")
+            }
         }
     }
 
     fallback {
-        reactions.sayRandom(
-            "Sorry, I didn't get that...",
-            "Sorry, could you repeat please?"
-        )
+        reactions.run{
+            say("You said ${request.input}.")
+            sayRandom(
+                "Прости, я ничего не понял...",
+                "Прости, не мог бы ты повторить?"
+            )
+        }
     }
 }
