@@ -4,6 +4,10 @@ import com.justai.jaicf.builder.Scenario
 import com.justai.jaicf.reactions.buttons
 
 val mainScenario = Scenario {
+
+    append(HumanPlayScenario)
+    append(RobotPlayScenario)
+
     state("start") {
         activators {
             regex("/start")
@@ -23,23 +27,7 @@ val mainScenario = Scenario {
             action {
                 reactions.run{
                     say("Кто начнет?")
-                    buttons(Pair("Ты", "you"), Pair("Я", "me"))
-                }
-            }
-
-            state("you") {
-                action {
-                    reactions.run {
-                        say("Я начинаю!")
-                    }
-                }
-            }
-
-            state("me") {
-                action {
-                    reactions.run {
-                        say("Ты начинаешь!")
-                    }
+                    buttons("Ты" to RobotPlayScenario.playRobot, "Я" to HumanPlayScenario.playHuman)
                 }
             }
         }
