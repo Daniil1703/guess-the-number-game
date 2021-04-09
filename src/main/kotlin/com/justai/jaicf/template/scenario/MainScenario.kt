@@ -3,6 +3,8 @@ package com.justai.jaicf.template.scenario
 import com.justai.jaicf.builder.Scenario
 import com.justai.jaicf.reactions.buttons
 
+const val exitGame = "/exit"
+
 val mainScenario = Scenario {
 
     append(HumanPlayScenario)
@@ -33,7 +35,7 @@ val mainScenario = Scenario {
         }
     }
 
-    state("exit") {
+    state(exitGame) {
         activators {
             regex("/exit")
             regex("/quit")
@@ -41,7 +43,7 @@ val mainScenario = Scenario {
         }
         action {
             reactions.run {
-                say("Очень жаль! Ну ничего страшного, если захочешь поиграть, то скажи что-то вроде 'Хочу играть'")
+                say("Вот и поиграли, если захочешь еще, то скажи что-то вроде 'Хочу играть'")
             }
         }
     }
@@ -58,7 +60,7 @@ val mainScenario = Scenario {
                         "или меньше загаданное число, а затем повторяем попытку.")
                 say("Если число угадано, игра будет считаться завершенной.")
                 say("Начнем?")
-                buttons("Да" to "/start/whoFirst", "Нет" to "/exit")
+                buttons("Да" to "/start/whoFirst", "Нет" to exitGame)
             }
         }
     }
