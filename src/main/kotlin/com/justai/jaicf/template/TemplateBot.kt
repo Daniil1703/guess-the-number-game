@@ -9,7 +9,7 @@ import com.justai.jaicf.logging.Slf4jConversationLogger
 import com.justai.jaicf.template.scenario.mainScenario
 import java.util.*
 
-val accessToken: String = System.getenv("JAICP_API_TOKEN") ?: Properties().run {
+val accessToken: String = System.getenv("5e43a188-da7f-45b4-b78d-d3ede5f78cc") ?: Properties().run {
     load(CailaNLUSettings::class.java.getResourceAsStream("/jaicp.properties"))
     getProperty("apiToken")
 }

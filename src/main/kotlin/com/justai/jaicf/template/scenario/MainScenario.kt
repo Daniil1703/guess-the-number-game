@@ -20,7 +20,7 @@ val mainScenario = Scenario {
                 image("https://media.giphy.com/media/l2JdV8tMQxD6OZf8s/giphy.gif")
                 say("Привет! Это игра больше-меньше")
                 say("Играем?")
-                buttons("Да" to "./whoFirst", "Нет" to "/exit")
+                buttons("Да" to "./whoFirst", "Нет" to "./exit")
                 buttons("Правила" to "/help")
             }
         }

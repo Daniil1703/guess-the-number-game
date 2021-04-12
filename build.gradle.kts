@@ -19,17 +19,17 @@ repositories {
     mavenLocal()
     mavenCentral()
     jcenter()
-    maven("https://jitpack.io")
+    maven(uri("https://jitpack.io"))
 }
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
     implementation("ch.qos.logback:logback-classic:$logback")
-
     implementation("com.justai.jaicf:core:$jaicf")
     implementation("com.justai.jaicf:jaicp:$jaicf")
     implementation("com.justai.jaicf:caila:$jaicf")
+    implementation("com.just-ai.jaicf:telegram:1.0.0")
 }
 
 tasks {
