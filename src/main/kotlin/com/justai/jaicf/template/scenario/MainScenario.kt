@@ -67,11 +67,11 @@ val mainScenario = Scenario {
 
     fallback {
         reactions.run{
-            say("Ты сказал ${request.input}.")
             sayRandom(
                 "Прости, но я ничего не понял...",
                 "Прости, не мог бы ты повторить?"
             )
+            say("Если хочешь играть, то так и скажи!")
         }
     }
 }
