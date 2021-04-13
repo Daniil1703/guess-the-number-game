@@ -1,4 +1,4 @@
-package com.justai.jaicf.template.scenario
+package com.justai.jaicf.game.scenario
 
 import com.justai.jaicf.activator.caila.caila
 import com.justai.jaicf.builder.Scenario
@@ -9,7 +9,7 @@ object RobotPlayScenario : Scenario {
 
     const val playRobot = "/playRobot"
 
-    override val scenario by Scenario {
+    override val model by Scenario {
 
         state(playRobot) {
             action {

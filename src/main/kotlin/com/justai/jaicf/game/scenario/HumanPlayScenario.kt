@@ -1,4 +1,4 @@
-package com.justai.jaicf.template.scenario
+package com.justai.jaicf.game.scenario
 
 import com.justai.jaicf.builder.Scenario
 import com.justai.jaicf.model.scenario.Scenario
@@ -13,7 +13,7 @@ object HumanPlayScenario : Scenario {
     private var guessNumber = 0
     private var container = 0
 
-    override val scenario by Scenario {
+    override val model by Scenario {
 
         state(playHuman) {
             action {
