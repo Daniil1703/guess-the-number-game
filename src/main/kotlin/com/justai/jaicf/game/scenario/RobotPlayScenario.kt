@@ -1,4 +1,4 @@
-package com.justai.jaicf.template.scenario
+package com.justai.jaicf.game.scenario
 
 import com.justai.jaicf.activator.caila.caila
 import com.justai.jaicf.builder.Scenario
