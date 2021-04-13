@@ -9,7 +9,7 @@ object RobotPlayScenario : Scenario {
 
     const val playRobot = "/playRobot"
 
-    override val scenario by Scenario {
+    override val model by Scenario {
 
         state(playRobot) {
             action {

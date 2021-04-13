@@ -13,7 +13,7 @@ object HumanPlayScenario : Scenario {
     private var guessNumber = 0
     private var container = 0
 
-    override val scenario by Scenario {
+    override val model by Scenario {
 
         state(playHuman) {
             action {
