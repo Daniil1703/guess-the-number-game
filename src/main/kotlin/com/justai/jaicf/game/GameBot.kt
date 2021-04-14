@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Configuration
 import java.util.*
 import javax.servlet.annotation.WebServlet
 
-val accessToken: String = System.getenv("5e43a188-da7f-45b4-b78d-d3ede5f78cc") ?: Properties().run {
+val accessToken: String = System.getenv("JAICP_API_TOKEN") ?: Properties().run {
     load(CailaNLUSettings::class.java.getResourceAsStream("/jaicp.properties"))
     getProperty("apiToken")
 }
