@@ -26,7 +26,6 @@ object HumanPlayScenario : Scenario {
             state("game") {
                 action {
                     val game = GameController(context)
-
                     if (game.checkWinner()) {
                         game.guessNumber = game.randomNumber()
                         reactions.say("Я победил! Вы загадали число - ${game.guessNumber}!")
