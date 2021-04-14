@@ -1,6 +1,6 @@
-# JAICF Caila Bot template
+# JAICF Caila Bot 'guess the number' game
 
-Here is a ready to use [JAICF](https://github.com/just-ai/jaicf-kotlin) bot template that can be ran locally or deployed to JAICP Cloud or Heroku server.
+Here is a ready to use [JAICF](https://github.com/just-ai/jaicf-kotlin) 'guess the number' game that can be ran locally or deployed to JAICP Cloud or Heroku server.
 
 # How to use
 
