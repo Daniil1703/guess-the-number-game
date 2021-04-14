@@ -1,127 +1,178 @@
 {
-  "project": {
-    "id": "jaicf-jaicp-caila-template",
-    "name": "jaicf-jaicp-caila-template",
-    "folder": "/"
+  "project" : {
+    "id" : "number_game_prod-250873579-Gil",
+    "name" : "number_game_prod-250873579-Gil",
+    "folder" : "/jaicp"
   },
-  "settings": {
-    "language": "en",
-    "spellingCorrection": false,
-    "classificationAlgorithm": "sts",
-    "timezone": "UTC",
-    "shared": false
+  "settings" : {
+    "language" : "ru",
+    "spellingCorrection" : false,
+    "classificationAlgorithm" : "sts",
+    "timezone" : "UTC",
+    "shared" : false
   },
-  "intents": [
-    {
-      "id": 6760,
-      "path": "/Bye",
-      "enabled": true,
-      "shared": false,
-      "phrases": [
-        {
-          "text": "goodbye"
-        },
-        {
-          "text": "bye"
-        },
-        {
-          "text": "see you"
-        }
-      ],
-      "patterns": []
-    },
-    {
-      "id": 6761,
-      "path": "/Hello",
-      "enabled": true,
-      "shared": false,
-      "phrases": [
-        {
-          "text": "hi"
-        },
-        {
-          "text": "hello"
-        },
-        {
-          "text": "welcome"
-        }
-      ],
-      "patterns": []
-    },
-    {
-      "id": 6762,
-      "path": "/Smalltalk",
-      "enabled": true,
-      "shared": false,
-      "phrases": [],
-      "patterns": []
-    },
-    {
-      "id": 6763,
-      "path": "/Smalltalk/Help",
-      "description": "",
-      "answer": "I'm a templated bot and can't do useful things yet...",
-      "enabled": true,
-      "shared": false,
-      "phrases": [
-        {
-          "text": "help"
-        },
-        {
-          "text": "what can you do"
-        },
-        {
-          "text": "your functions"
-        },
-        {
-          "text": "your possibilities"
-        },
-        {
-          "text": "tell me about you"
-        }
-      ],
-      "patterns": []
-    },
-    {
-      "id": 6764,
-      "path": "/Smalltalk/HowAreYou",
-      "answer": "I'm fine! Thank you!",
-      "enabled": true,
-      "shared": false,
-      "phrases": [
-        {
-          "text": "how are you"
-        }
-      ],
-      "patterns": []
-    },
-    {
-      "id": 6765,
-      "path": "/Smalltalk/WhatIsYourName",
-      "answer": "I don't have a name yet, I'm just a bot",
-      "enabled": true,
-      "shared": false,
-      "phrases": [
-        {
-          "text": "what is your name"
-        },
-        {
-          "text": "how to name you"
-        },
-        {
-          "text": "say me your name"
-        }
-      ],
-      "patterns": []
-    }
-  ],
-  "entities": [],
-  "enabledSystemEntities": [
-    "duckling.number",
-    "duckling.time",
-    "duckling.duration",
-    "duckling.phone-number",
-    "duckling.email",
-    "duckling.url"
-  ]
+  "intents" : [ {
+    "id" : 444615,
+    "path" : "/exit",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ ],
+    "patterns" : [ "(выход|хватит|конец игры)", "* (не хочу/устал/хватит/задолбал*) играть *" ]
+  }, {
+    "id" : 444616,
+    "path" : "/game",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ ],
+    "patterns" : [ "* {(хочу|давай|может|запусти) (игру|играть|поиграем|сыграем)}  *", "* угадай число *", "числа" ]
+  }, {
+    "id" : 444617,
+    "path" : "/less",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ ],
+    "patterns" : [ "* меньше *" ]
+  }, {
+    "id" : 444618,
+    "path" : "/more",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ ],
+    "patterns" : [ "* больше *" ]
+  }, {
+    "id" : 444619,
+    "path" : "/myNumber",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ ],
+    "patterns" : [ "* (да/ты (угадал/прав)/все верно/как ты это сделал) *" ]
+  }, {
+    "id" : 444620,
+    "path" : "/notMyNumber",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ ],
+    "patterns" : [ "(нет/неа/не)", "* не мое *", "* загадал не *" ]
+  }, {
+    "id" : 444621,
+    "path" : "/numbers",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ ],
+    "patterns" : [ "* @duckling.number *", "* {(считаю/предполагаю/думаю) * @duckling.number} *" ],
+    "slots" : [ ]
+  }, {
+    "id" : 444622,
+    "path" : "/rules",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ ],
+    "patterns" : [ "* {правила (расскажи|объясни|мне нужны|какие|что по)} *", "правила" ]
+  } ],
+  "entities" : [ ],
+  "enabledSystemEntities" : [ "duckling.number", "duckling.time", "duckling.duration", "duckling.phone-number", "duckling.email", "duckling.url" ],
+  "spellerDictionary" : [ ],
+  "systemEntities" : [ {
+    "name" : "mystem.geo",
+    "enabled" : false
+  }, {
+    "name" : "mystem.persn",
+    "enabled" : false
+  }, {
+    "name" : "mystem.obsc",
+    "enabled" : false
+  }, {
+    "name" : "mystem.patrn",
+    "enabled" : false
+  }, {
+    "name" : "mystem.famn",
+    "enabled" : false
+  }, {
+    "name" : "pymorphy.romn",
+    "enabled" : false
+  }, {
+    "name" : "pymorphy.latn",
+    "enabled" : false
+  }, {
+    "name" : "pymorphy.numb",
+    "enabled" : false
+  }, {
+    "name" : "pymorphy.intg",
+    "enabled" : false
+  }, {
+    "name" : "pymorphy.abbr",
+    "enabled" : false
+  }, {
+    "name" : "pymorphy.name",
+    "enabled" : false
+  }, {
+    "name" : "pymorphy.surn",
+    "enabled" : false
+  }, {
+    "name" : "pymorphy.patr",
+    "enabled" : false
+  }, {
+    "name" : "pymorphy.geox",
+    "enabled" : false
+  }, {
+    "name" : "pymorphy.orgn",
+    "enabled" : false
+  }, {
+    "name" : "duckling.number",
+    "version" : "v2",
+    "enabled" : true
+  }, {
+    "name" : "duckling.ordinal",
+    "version" : "v2",
+    "enabled" : false
+  }, {
+    "name" : "duckling.amount-of-money",
+    "version" : "v2",
+    "enabled" : false
+  }, {
+    "name" : "duckling.distance",
+    "version" : "v2",
+    "enabled" : false
+  }, {
+    "name" : "duckling.time",
+    "version" : "v2",
+    "enabled" : true
+  }, {
+    "name" : "duckling.date",
+    "version" : "v2",
+    "enabled" : false
+  }, {
+    "name" : "duckling.time-of-day",
+    "version" : "v2",
+    "enabled" : false
+  }, {
+    "name" : "duckling.duration",
+    "version" : "v2",
+    "enabled" : true
+  }, {
+    "name" : "duckling.phone-number",
+    "version" : "v2",
+    "enabled" : true
+  }, {
+    "name" : "duckling.email",
+    "version" : "v2",
+    "enabled" : true
+  }, {
+    "name" : "duckling.url",
+    "version" : "v2",
+    "enabled" : true
+  }, {
+    "name" : "duckling.interval",
+    "version" : "v2",
+    "enabled" : false
+  }, {
+    "name" : "mlps-obscene.obscene",
+    "enabled" : false
+  }, {
+    "name" : "zb.datetime",
+    "enabled" : false
+  }, {
+    "name" : "zb.number",
+    "enabled" : false
+  } ]
 }
