@@ -1,6 +1,7 @@
 package com.justai.jaicf.game.scenario
 
 import com.justai.jaicf.builder.Scenario
+import com.justai.jaicf.game.GameController
 import com.justai.jaicf.model.scenario.Scenario
 import com.justai.jaicf.model.scenario.getValue
 import com.justai.jaicf.reactions.buttons
@@ -8,16 +9,14 @@ import com.justai.jaicf.reactions.buttons
 object HumanPlayScenario : Scenario {
 
     const val playHuman = "/playHuman"
-    private var startNumber = 0
-    private var endNumber = 100
-    private var guessNumber = 0
-    private var container = 0
 
     override val model by Scenario {
 
         state(playHuman) {
             action {
                 reactions.run {
+                    val game = GameController(context)
+                    game.reset()
                     say("Отлично! Ты загадываешь число, я пытаюсь его угадать!")
                     say("Загадал?")
                     buttons("Да" to "game")
@@ -26,13 +25,18 @@ object HumanPlayScenario : Scenario {
 
             state("game") {
                 action {
-                    if (startNumber == endNumber || endNumber - startNumber == 1) {
-                        guessNumber = tryGuessNumber(startNumber, endNumber)
-                        reactions.go("winner")
+                    val game = GameController(context)
+
+                    if (game.checkWinner()) {
+                        game.guessNumber = game.randomNumber()
+                        reactions.say("Я победил! Вы загадали число - ${game.guessNumber}!")
+                        game.reset()
+                        reactions.go(exitGame)
+                    } else {
+                        game.guessNumber = game.randomNumber()
+                        reactions.say("Ваше число - ${game.guessNumber} ?")
+                        game.container = game.guessNumber
                     }
-                    guessNumber = tryGuessNumber(startNumber, endNumber)
-                    reactions.say("Ваше число - $guessNumber ?")
-                    container = guessNumber
                 }
 
                 state("less") {
@@ -41,7 +45,8 @@ object HumanPlayScenario : Scenario {
                     }
 
                     action {
-                        endNumber = container
+                        val game = GameController(context)
+                        game.endNumber = game.container
                         reactions.go("../")
                     }
                 }
@@ -51,7 +56,8 @@ object HumanPlayScenario : Scenario {
                         intent("more")
                     }
                         action {
-                            startNumber = container
+                            val game = GameController(context)
+                            game.startNumber = game.container
                             reactions.go("../")
                         }
                 }
@@ -72,20 +78,11 @@ object HumanPlayScenario : Scenario {
 
                     action {
                         reactions.run{
-                            say("Ура! Я победил! Не так уж и тяжело было угадать число $guessNumber :)")
-                            startNumber = 0
-                            endNumber = 100
+                            val game = GameController(context)
+                            say("Ура! Я победил! Не так уж и тяжело было угадать число ${game.guessNumber} :)")
+                            game.reset()
                             go(exitGame)
                         }
-                    }
-                }
-
-                state("winner") {
-                    action {
-                        reactions.say("Я победил! Вы загадали число - $guessNumber и не надо говорить, что это не так!")
-                        startNumber = 0
-                        endNumber = 100
-                        reactions.go(exitGame)
                     }
                 }
 
@@ -97,8 +94,4 @@ object HumanPlayScenario : Scenario {
             }
         }
     }
-}
-
-fun tryGuessNumber(startNumber: Int, endNumber: Int): Int {
-    return (startNumber..endNumber).random()
 }
