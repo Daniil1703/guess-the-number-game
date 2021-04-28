@@ -67,6 +67,10 @@ tasks.create("stage") {
 	dependsOn("shadowJar")
 }
 
+tasks.withType<com.justai.jaicf.plugins.jaicp.build.JaicpBuild> {
+	mainClassName.set(application.mainClassName)
+}
+
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
