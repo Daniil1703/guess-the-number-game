@@ -1,11 +1,13 @@
 package com.justai.jaicf.game
 
-import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
+import com.justai.jaicf.game.connections.Context
+import org.springframework.boot.builder.SpringApplicationBuilder
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
-@SpringBootApplication
-class GuessTheNumberApplication
+class ServletInitializer : SpringBootServletInitializer() {
+	override fun configure(application: SpringApplicationBuilder): SpringApplicationBuilder {
 
-fun main(args: Array<String>) {
-	runApplication<GuessTheNumberApplication>(*args)
+		return application.sources(Context::class.java)
+	}
+
 }
