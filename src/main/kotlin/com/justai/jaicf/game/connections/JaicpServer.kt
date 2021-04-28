@@ -41,7 +41,6 @@ class Context {
 
 fun main(args: Array<String>) {
     runApplication<Context>(*args) {
-        Context().jaicpServlet()
         setBannerMode(Banner.Mode.OFF)
     }
 }
