@@ -32,7 +32,8 @@ class Context {
                     ChatApiChannel
                 )
             )
-        )
+        ),
+        "/"
     ).apply {
         setLoadOnStartup(1)
     }

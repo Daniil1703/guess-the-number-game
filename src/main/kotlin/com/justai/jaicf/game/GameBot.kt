@@ -11,7 +11,7 @@ import com.justai.jaicf.game.scenario.mainScenario
 import java.util.*
 
 val accessToken: String = System.getenv("JAICP_API_TOKEN") ?: Properties().run {
-    load(CailaNLUSettings::class.java.getResourceAsStream("/jaicp.properties"))
+    load(CailaNLUSettings::class.java.getResourceAsStream("/application.properties"))
     getProperty("apiToken")
 }
 
