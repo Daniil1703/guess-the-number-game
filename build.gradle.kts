@@ -23,7 +23,7 @@ configurations {
 }
 
 application {
-	mainClassName = "com.justai.jaicf.game.connections.JaicpServerKt"
+	mainClass.set("com.justai.jaicf.game.connections.JaicpServerKt")
 }
 
 repositories {
@@ -68,7 +68,7 @@ tasks.create("stage") {
 }
 
 tasks.withType<com.justai.jaicf.plugins.jaicp.build.JaicpBuild> {
-	mainClassName.set(application.mainClassName)
+	mainClassName.set(application.mainClass)
 }
 
 tasks.withType<KotlinCompile> {
