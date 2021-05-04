@@ -34,23 +34,17 @@ repositories {
 }
 
 dependencies {
-	implementation(kotlin("stdlib-jdk8"))
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("org.springframework.boot:spring-boot-starter-web")
 
 	implementation("ch.qos.logback:logback-classic:$logback")
 	implementation("com.just-ai.jaicf:core:$jaicf")
 	implementation("com.just-ai.jaicf:jaicp:$jaicf")
 	implementation("com.just-ai.jaicf:caila:$jaicf")
 	implementation("com.just-ai.jaicf:telegram:$jaicf")
-	implementation("org.springframework.boot:spring-boot-starter")
+
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("org.springframework.boot:spring-boot-starter-data-rest")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	compileOnly("org.projectlombok:lombok")
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
